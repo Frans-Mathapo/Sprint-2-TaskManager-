@@ -1,3 +1,22 @@
+#Declare the list as an empty list.
+#It will store all tasks as entered by the user
+tasks = [] 
+
+#Define a function add_task
+def add_task():
+#Declate a variable title
+#Whatever the user types is stored inside the variable title
+    title = input("Enter the title of the Task:")
+
+#Create a dictonary named task
+#task stores information in key-value pairs
+    task = {
+        "task number": len(tasks) + 1 ,#len(tasks) counts how many tasks are already in the list
+        "title" : title ,#adds the title entered by the user
+        "status" : "To Do"#Every task automaticaly starts with "To Do"status
+    }
+    tasks.append(task)
+    print("Task has been added!")
 
 
 while True:
@@ -14,8 +33,7 @@ while True:
     choice = input("\nChoose an option: ").strip()
     
     if choice == "1":
-        print("# Call a function for adding a task e.g add_task()")
-        # add_task()
+        add_task()
     elif choice == "2":
        print("# Call a function for displaying all tasks e.g display_all_takss()")
        # display_all_takss()
@@ -35,3 +53,6 @@ while True:
     else:
         # validated for a wrong input
         print("Invalid choice. Try again.\n")
+
+
+
