@@ -45,7 +45,7 @@ git checkout -b YourBranchName
 For example:
 
 ```bash
-git checkout -b Frans
+git checkout -b AddTasks
 ```
 
 ### 4. Create a Python Virtual Environment
