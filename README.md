@@ -1,6 +1,3 @@
-# Sprint-2-TaskManager-
-Team B is required to build a Basic Task Manager. 
-
 # Sprint 2 – Task Manager
 
 ## 🛠️ Project Setup
@@ -12,7 +9,7 @@ Follow the steps below to clone the project and set up your local development en
 **NB:** Make sure you are inside your project's directory before running the command.
 
 ```bash
-git clone https://github.com/Frans-Mathapo/Sprint-2-TaskManager-.git
+git clone "https://github.com/Frans-Mathapo/Sprint-2-TaskManager-.git"
 ```
 
 Move into the project directory:
@@ -77,7 +74,7 @@ Install the required `pandas` package:
 pip install pandas
 ```
 
-### ✅ Setup Complete
+### Setup Complete
 
 You are now ready to work on the project.
 
