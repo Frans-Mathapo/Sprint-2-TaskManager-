@@ -1,6 +1,6 @@
 # Sprint 2 – Task Manager
 
-## 🛠️ Project Setup
+## Project Setup
 
 Follow the steps below to clone the project and set up your local development environment.
 
