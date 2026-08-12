@@ -129,6 +129,47 @@ def update_status():
     print("\nTask status updated successfully!")
 # Update function end here
 
+#delete function start here
+def delete_task():
+
+    # Display all tasks
+    display_all()
+
+    if not tasks:
+        return
+
+    # Ask the user which task they want to delete
+    select_task = int(
+        input("\nEnter the task number you want to delete: ").strip()
+    )
+
+    # Convert task number to Python list index
+    select_task -= 1
+
+    # Check that the selected task exists
+    if select_task < 0 or select_task >= len(tasks):
+        print("Invalid task number.")
+        return
+
+    # Get the selected task
+    selected_task = tasks[select_task]
+
+    # Display the task that will be deleted
+    print("\nTask to be deleted:")
+    print(f"Task Number: {selected_task['task_number']}")
+    print(f"Title: {selected_task['title']}")
+    print(f"Status: {selected_task['status']}")
+
+    # Delete the task
+    tasks.pop(select_task)
+
+    # Save updated tasks to CSV
+    df = pd.DataFrame(tasks)
+    df.to_csv(CSV_FILE, index=False)
+
+    print("\nTask deleted successfully!")
+#delete function end here
+
 while True:
     # Application menu
 
