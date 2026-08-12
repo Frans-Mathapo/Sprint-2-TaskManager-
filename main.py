@@ -36,6 +36,34 @@ def display_all():
         print(f"Status: task['status']")
         print("-" * 20)
 """
+def display_single_task():
+    # First check if the list is empty
+    if len(tasks) == 0:
+        print("There are no tasks available to display.")
+        return
+        
+    # Ask the user for the task number and convert it to an integer
+    search_id = int(input("Enter the task number you want to view: "))
+    
+    # Create a variable to keep track of whether we found the task
+    found = False
+    
+    # Search through the list
+    for task in tasks:
+        if task['task_number'] == search_id:
+            print("\n--- Task Details ---")
+            print(f"Task Number: {task['task_number']}")
+            print(f"Title:       {task['title']}")
+            print(f"Status:      {task['status']}")
+            print("--------------------")
+            found = True
+            break # Exit the loop since we found what we were looking for
+            
+    # If the loop finishes and we didn't find it, tell the user
+    if found == False:
+        print("Task not found.")
+
+#My Display Single Task function ends here!
 
 while True:
     # Application menu
@@ -55,8 +83,8 @@ while True:
     elif choice == "2":
         display_all()
     elif choice == "3":
-       print("# Call a function to display a single task")
-       # display_single_task()
+       # Call a function to display a single task
+       display_single_task()
     elif choice == "4":
         print("# Call a function for Updating tasks")
         # Update_task()
