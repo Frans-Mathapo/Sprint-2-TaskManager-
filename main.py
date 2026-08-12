@@ -1,3 +1,4 @@
+import pandas as pd
 #Declare the list as an empty list.
 #It will store all tasks as entered by the user
 tasks = [] 
@@ -11,13 +12,30 @@ def add_task():
 #Create a dictonary named task
 #task stores information in key-value pairs
     task = {
-        "task number": len(tasks) + 1 ,#len(tasks) counts how many tasks are already in the list
+        "task_number": len(tasks) + 1 ,#len(tasks) counts how many tasks are already in the list
         "title" : title ,#adds the title entered by the user
         "status" : "To Do"#Every task automaticaly starts with "To Do"status
     }
     tasks.append(task)
     print("Task has been added!")
 
+def display_all():
+    if not tasks:
+        print("There are no tasks available")
+        return
+
+    print("All Tasks")
+
+    df= pd.DataFrame(tasks)
+    print(df)
+
+""""
+    for task in tasks:
+        print(f"task number: {task['task_number']}")
+        print(f"title:{task['title']}")
+        print(f"Status: task['status']")
+        print("-" * 20)
+"""
 
 while True:
     # Application menu
@@ -35,8 +53,7 @@ while True:
     if choice == "1":
         add_task()
     elif choice == "2":
-       print("# Call a function for displaying all tasks e.g display_all_takss()")
-       # display_all_takss()
+        display_all()
     elif choice == "3":
        print("# Call a function to display a single task")
        # display_single_task()
