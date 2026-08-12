@@ -3,6 +3,8 @@ import pandas as pd
 #It will store all tasks as entered by the user
 tasks = [] 
 
+CSV_FILE = "datasets/tasks.csv" # initialize dataset path for csv file
+
 #Define a function add_task
 def add_task():
 #Declate a variable title
@@ -28,7 +30,10 @@ def display_all():
 
     df= pd.DataFrame(tasks)
     print(df)
-
+    
+    # Save data into a csv file
+    df.to_csv(CSV_FILE, index=False)
+    
 """"
     for task in tasks:
         print(f"task number: {task['task_number']}")
@@ -36,6 +41,7 @@ def display_all():
         print(f"Status: task['status']")
         print("-" * 20)
 """
+
 def display_single_task():
     # First check if the list is empty
     if len(tasks) == 0:
