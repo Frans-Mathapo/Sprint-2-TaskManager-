@@ -63,7 +63,6 @@ def display_single_task():
     if found == False:
         print("Task not found.")
 
-#My Display Single Task function ends here!
 
 while True:
     # Application menu
@@ -89,8 +88,8 @@ while True:
         print("# Call a function for Updating tasks")
         # Update_task()
     elif choice == "5":
-        print("# Call a function for deleting tasks")
-        # delete_task()
+        # Call a function for deleting tasks
+        delete_task()
     elif choice == "6":
         print("\nExiting the program")
         print("Goodbye!")
