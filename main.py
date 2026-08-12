@@ -3,6 +3,8 @@ import pandas as pd
 #It will store all tasks as entered by the user
 tasks = [] 
 
+CSV_FILE = "datasets/tasks.csv" # initialize dataset path for csv file
+
 #Define a function add_task
 def add_task():
 #Declate a variable title
@@ -28,7 +30,10 @@ def display_all():
 
     df= pd.DataFrame(tasks)
     print(df)
-
+    
+    # Save data into a csv file
+    df.to_csv(CSV_FILE, index=False)
+    
 """"
     for task in tasks:
         print(f"task number: {task['task_number']}")
@@ -36,6 +41,7 @@ def display_all():
         print(f"Status: task['status']")
         print("-" * 20)
 """
+
 def display_single_task():
     # First check if the list is empty
     if len(tasks) == 0:
@@ -64,6 +70,65 @@ def display_single_task():
         print("Task not found.")
 
 
+# function for Updating tasks start here
+def update_status():
+
+    # Display all tasks
+    display_all()
+
+    if not tasks:
+        return
+
+    # Ask the user which task they want to update
+    select_task = int(
+        input("\nSelect the task number to change the status: ").strip()
+    )
+
+    # Convert user's number to Python list index
+    select_task -= 1
+
+    # Check that the selected task exists
+    if select_task < 0 or select_task >= len(tasks):
+        print("Invalid task number.")
+        return
+
+    # Get the selected task
+    selected_task = tasks[select_task]
+
+    # Display selected task
+    print("\nSelected Task:")
+    print(f"Task Number: {selected_task['task_number']}")
+    print(f"Title: {selected_task['title']}")
+    print(f"Current Status: {selected_task['status']}")
+
+    # Status options
+    statuses = ["To Do", "In Progress", "Done"]
+
+    print("\nChoose a new status:")
+
+    for i, status in enumerate(statuses, start=1):
+        print(f"{i}) {status}")
+
+    # Ask for new status
+    status_choice = int(
+        input("\nSelect status: ").strip()
+    )
+
+    # Validate status choice
+    if status_choice < 1 or status_choice > len(statuses):
+        print("Invalid status.")
+        return
+
+    # Update status
+    selected_task["status"] = statuses[status_choice - 1]
+
+    # Save updated tasks to CSV
+    df = pd.DataFrame(tasks)
+    df.to_csv(CSV_FILE, index=False)
+
+    print("\nTask status updated successfully!")
+# Update function end here
+
 while True:
     # Application menu
 
@@ -85,8 +150,8 @@ while True:
        # Call a function to display a single task
        display_single_task()
     elif choice == "4":
-        print("# Call a function for Updating tasks")
-        # Update_task()
+        # Call a function for Updating tasks"
+        update_status()
     elif choice == "5":
         # Call a function for deleting tasks
         delete_task()
